@@ -9,6 +9,8 @@
   --accent-soft: #e8f3e9;
   --danger: #b3261e;
   --danger-soft: #fbe9e7;
+  --chat-user: #e8f3e9;
+  --chat-assistant: #f1f3f6;
 }
 
 * { box-sizing: border-box; }
@@ -104,13 +106,14 @@ button {
   cursor: pointer;
 }
 button:hover { background: var(--accent-hover); }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
 
 .btn-secondary {
   background: #fff;
   color: var(--text);
   border: 1px solid var(--border);
 }
-.btn-secondary:hover { background: var(--bg); }
+.btn-secondary:hover:not(:disabled) { background: var(--bg); }
 
 .btn-link {
   background: transparent;
@@ -118,7 +121,7 @@ button:hover { background: var(--accent-hover); }
   padding: 0.3rem 0.6rem;
   border: 1px solid transparent;
 }
-.btn-link:hover { background: var(--accent-soft); border-color: #c5e1c6; }
+.btn-link:hover:not(:disabled) { background: var(--accent-soft); border-color: #c5e1c6; }
 
 .totals, .week-totals {
   display: grid;
@@ -254,6 +257,7 @@ button:hover { background: var(--accent-hover); }
 }
 
 .muted { color: var(--muted); font-size: 0.85rem; }
+.muted.small { font-size: 0.78rem; }
 .hint { margin: -0.5rem 0 1rem; }
 
 .empty {
@@ -263,6 +267,89 @@ button:hover { background: var(--accent-hover); }
 }
 .empty.hidden { display: none; }
 
+/* ---- Nutrition assistant ---- */
+
+.chat-config { margin-bottom: 0.5rem; }
+.api-key-form p { margin: 0 0 0.5rem; }
+.api-key-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+.api-key-row.inline { margin-bottom: 0; }
+.api-key-row input {
+  flex: 1;
+  min-width: 180px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+}
+
+.chat-history {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 360px;
+  overflow-y: auto;
+  padding: 0.25rem 0;
+  margin-bottom: 0.75rem;
+}
+.chat-history:empty { display: none; }
+
+.chat-msg {
+  padding: 0.55rem 0.8rem;
+  border-radius: 12px;
+  max-width: 90%;
+  word-wrap: break-word;
+  font-size: 0.95rem;
+}
+.chat-msg-user {
+  align-self: flex-end;
+  background: var(--chat-user);
+  border-bottom-right-radius: 4px;
+}
+.chat-msg-assistant {
+  align-self: flex-start;
+  background: var(--chat-assistant);
+  border-bottom-left-radius: 4px;
+}
+.chat-msg-assistant.chat-error { background: var(--danger-soft); }
+.chat-pending { font-style: italic; color: var(--muted); }
+
+.chat-reply { margin-bottom: 0.4rem; }
+.chat-reply:last-child { margin-bottom: 0; }
+
+.chat-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.chat-form input { flex: 1; }
+
+.estimate-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 0.85rem;
+  margin-top: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.estimate-head { font-weight: 600; }
+.estimate-macros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.85rem;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+.estimate-macros span strong { font-weight: 600; }
+.estimate-notes { margin: 0; }
+.estimate-add { align-self: flex-start; }
+
 @media (max-width: 480px) {
   .totals, .week-totals { grid-template-columns: repeat(2, 1fr); }
+  .chat-msg { max-width: 100%; }
 }

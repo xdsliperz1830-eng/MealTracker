@@ -468,6 +468,28 @@ importInput.addEventListener("change", async () => {
   }
 });
 
+window.addMealFromEstimate = function (estimate) {
+  const date = (form.elements.date && form.elements.date.value) || todayISO();
+  const type = (form.elements.type && form.elements.type.value) || "snack";
+  const meal = {
+    id: createId(),
+    createdAt: Date.now(),
+    date,
+    type,
+    name: String(estimate.name || "Logged from assistant").trim(),
+    servings: Number(estimate.servings) || 1,
+    calories: Number(estimate.calories) || 0,
+    protein: Number(estimate.protein) || 0,
+    carbs: Number(estimate.carbs) || 0,
+    fat: Number(estimate.fat) || 0,
+  };
+  const meals = loadMeals();
+  meals.push(meal);
+  saveMeals(meals);
+  filterDateInput.value = date;
+  render();
+};
+
 const today = todayISO();
 form.elements.date.value = today;
 filterDateInput.value = today;

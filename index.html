@@ -68,6 +68,22 @@
 
     <section class="card">
       <div class="section-head">
+        <h2>Nutrition assistant</h2>
+        <button type="button" id="chat-clear" class="btn-link" title="Clear chat history">Clear chat</button>
+      </div>
+      <p class="muted hint">Describe what you ate &mdash; the assistant estimates calories, protein, carbs, and fat, and lets you add it straight to your log.</p>
+
+      <div id="chat-config" class="chat-config"></div>
+      <div id="chat-history" class="chat-history"></div>
+
+      <form id="chat-form" class="chat-form">
+        <input type="text" id="chat-input" placeholder="e.g. medium Caesar salad with grilled chicken" autocomplete="off" />
+        <button type="submit" id="chat-send">Send</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
         <h2>Daily totals</h2>
         <label class="inline">
           Showing
@@ -124,5 +140,6 @@
   </main>
 
   <script src="app.js"></script>
+  <script src="chatbot.js"></script>
 </body>
 </html>

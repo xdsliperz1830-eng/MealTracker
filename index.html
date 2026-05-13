@@ -81,12 +81,45 @@
         <div><span class="big" id="total-carbs">0</span><span class="label">g carbs</span></div>
         <div><span class="big" id="total-fat">0</span><span class="label">g fat</span></div>
       </div>
+
+      <div class="goal-row">
+        <label class="inline">
+          Daily goal (kcal)
+          <input type="number" id="calorie-goal" min="0" step="50" placeholder="e.g. 2000" />
+        </label>
+        <span id="goal-status" class="muted">Set a daily goal to see progress</span>
+      </div>
+      <div class="progress"><div class="progress-bar" id="goal-progress"></div></div>
+    </section>
+
+    <section class="card">
+      <h2>Weekly summary</h2>
+      <p class="muted hint">7-day overview ending on the selected date</p>
+      <div class="week-totals">
+        <div><span class="big" id="avg-calories">0</span><span class="label">avg kcal/day</span></div>
+        <div><span class="big" id="avg-protein">0</span><span class="label">avg g protein</span></div>
+        <div><span class="big" id="avg-carbs">0</span><span class="label">avg g carbs</span></div>
+        <div><span class="big" id="avg-fat">0</span><span class="label">avg g fat</span></div>
+      </div>
+      <div class="chart" id="week-chart"></div>
     </section>
 
     <section class="card">
       <h2>Logged meals</h2>
       <ul id="meal-list" class="meal-list"></ul>
       <p id="empty-state" class="empty">No meals logged for this day yet.</p>
+    </section>
+
+    <section class="card">
+      <h2>Data</h2>
+      <div class="data-actions">
+        <button type="button" id="export-btn" class="btn-secondary">Export CSV</button>
+        <label class="btn-secondary file-label">
+          Import CSV
+          <input type="file" id="import-input" accept=".csv,text/csv" hidden />
+        </label>
+        <span id="data-status" class="muted"></span>
+      </div>
     </section>
   </main>
 

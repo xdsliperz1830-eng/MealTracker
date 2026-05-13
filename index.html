@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meal Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Meal Tracker</h1>
+    <p class="subtitle">Log your food intake and nutrition</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Add a meal</h2>
+      <form id="meal-form">
+        <div class="row">
+          <label>
+            Food name
+            <input type="text" name="name" placeholder="e.g. Grilled chicken salad" required />
+          </label>
+          <label>
+            Meal type
+            <select name="type" required>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch" selected>Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="snack">Snack</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            Date
+            <input type="date" name="date" required />
+          </label>
+          <label>
+            Servings
+            <input type="number" name="servings" value="1" min="0.25" step="0.25" required />
+          </label>
+        </div>
+
+        <div class="row">
+          <label>
+            Calories (kcal)
+            <input type="number" name="calories" min="0" step="1" placeholder="0" required />
+          </label>
+          <label>
+            Protein (g)
+            <input type="number" name="protein" min="0" step="0.1" placeholder="0" required />
+          </label>
+          <label>
+            Carbs (g)
+            <input type="number" name="carbs" min="0" step="0.1" placeholder="0" required />
+          </label>
+          <label>
+            Fat (g)
+            <input type="number" name="fat" min="0" step="0.1" placeholder="0" required />
+          </label>
+        </div>
+
+        <button type="submit">Add meal</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <h2>Daily totals</h2>
+        <label class="inline">
+          Showing
+          <input type="date" id="filter-date" />
+        </label>
+      </div>
+
+      <div id="totals" class="totals">
+        <div><span class="big" id="total-calories">0</span><span class="label">kcal</span></div>
+        <div><span class="big" id="total-protein">0</span><span class="label">g protein</span></div>
+        <div><span class="big" id="total-carbs">0</span><span class="label">g carbs</span></div>
+        <div><span class="big" id="total-fat">0</span><span class="label">g fat</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Logged meals</h2>
+      <ul id="meal-list" class="meal-list"></ul>
+      <p id="empty-state" class="empty">No meals logged for this day yet.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -2,9 +2,11 @@
 
 A basic meal tracker for logging food intake and nutrition values.
 
+**Live site:** https://xdsliperz1830-eng.github.io/MealTracker/
+
 ## Usage
 
-Open `index.html` in any modern browser. No build step or server required.
+Open `index.html` in any modern browser, or visit the live site above. No build step or server required.
 
 ## Features
 
@@ -13,16 +15,16 @@ Open `index.html` in any modern browser. No build step or server required.
 - Daily totals automatically calculated
 - **Calorie goal** with progress bar and remaining-kcal status
 - **Weekly summary**: 7-day averages and a bar chart ending on the selected date
-- **Edit meals in place** — click *Edit* on any logged meal
+- **Edit meals in place** &mdash; click *Edit* on any logged meal
 - **CSV export / import** for backup and transfer between browsers
 - Filter the log by date
 - Data persists locally in the browser (`localStorage`)
 
 ## Files
 
-- `index.html` — markup and entry form
-- `styles.css` — styling
-- `app.js` — state, persistence, and rendering
+- `index.html` &mdash; markup and entry form
+- `styles.css` &mdash; styling
+- `app.js` &mdash; state, persistence, and rendering
 
 ## CSV format
 
